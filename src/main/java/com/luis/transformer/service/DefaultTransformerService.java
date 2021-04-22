@@ -34,7 +34,7 @@ public class DefaultTransformerService implements TransformerService, CrudServic
     @Override
     @Transactional
     public Transformer saveTransformer(Transformer transformer) {
-
+        
         repository.findByName(transformer.getName())
                 .ifPresent(t -> {
                     throw new EntityAlreadyExistException(String.format("Transformer with name %s already exits", t.getName()));
@@ -79,7 +79,7 @@ public class DefaultTransformerService implements TransformerService, CrudServic
 
     @Override
     public Transformer updateTransformer(Transformer transformer) {
-
+        
         load(transformer.getId());
 
         Optional<Transformer> byName = repository.findByName(transformer.getName());
