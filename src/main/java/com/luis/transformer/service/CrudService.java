@@ -25,7 +25,7 @@ public interface CrudService<T> {
     }
 
     default void delete(Long id) {
-        delete(load(id));
+        getRepository().delete(load(id));
     }
 
     default Long count() {
