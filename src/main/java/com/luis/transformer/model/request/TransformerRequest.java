@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.Range;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class TransformerRequest implements PlayerRank {
+public class TransformerRequest {
     
     private Long id;
     @NotBlank
