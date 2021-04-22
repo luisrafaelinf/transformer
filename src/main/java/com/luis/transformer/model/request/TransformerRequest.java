@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,8 @@ import org.hibernate.validator.constraints.Range;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TransformerRequest {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class TransformerRequest implements PlayerRank {
     
     private Long id;
     @NotBlank
@@ -21,6 +23,7 @@ public class TransformerRequest {
     @Pattern(regexp = "[A|D]")
     private String team;
     @NotBlank
+    @EqualsAndHashCode.Include    
     private String name;
     @Range(min = 1, max = 10)
     private Integer mechanicalStrength;
@@ -42,6 +45,6 @@ public class TransformerRequest {
     @Override
     public String toString() {
         return getName();
-    }
+    }  
     
 }

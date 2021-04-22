@@ -1,5 +1,6 @@
 package com.luis.transformer.configuration;
 
+import com.luis.transformer.exception.BattlefieldDestroyedException;
 import com.luis.transformer.exception.EntityAlreadyExistException;
 import com.luis.transformer.model.response.Validation;
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import javax.persistence.EntityNotFoundException;
+import javax.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -20,6 +22,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class ControllerAdvisor {
 
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler({BattlefieldDestroyedException.class})
+    public Map handleBattlefieldDestroyedException(BattlefieldDestroyedException ex) {
+        return getStatusInfo(ex.getLocalizedMessage());
+    }
+    
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({EntityNotFoundException.class})
@@ -41,7 +50,7 @@ public class ControllerAdvisor {
         return getStatusInfo(ex.getLocalizedMessage());
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler({MethodArgumentNotValidException.class})
     public ResponseEntity<Object> handleValidationExceptions(MethodArgumentNotValidException ex) {
         
         Map body = getStatusInfo("Validation request. Invalid argument");
@@ -50,6 +59,21 @@ public class ControllerAdvisor {
                 .getFieldErrors()
                 .stream()
                 .map(Validation::fromFieldError)
+                .collect(Collectors.toCollection(LinkedList::new));
+
+        body.put("errors", errors);
+        
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+    
+    @ExceptionHandler({ConstraintViolationException.class})
+    public ResponseEntity<Object> handleValidationExceptions(ConstraintViolationException ex) {
+        
+        Map body = getStatusInfo("Violation request argunment");
+
+        List<Validation> errors = ex.getConstraintViolations()
+                .stream()
+                .map(Validation::fromConstraintViolation)
                 .collect(Collectors.toCollection(LinkedList::new));
 
         body.put("errors", errors);

@@ -1,13 +1,10 @@
 package com.luis.transformer.controller;
 
-import com.luis.transformer.converter.TransformerCrudTransaction;
+import com.luis.transformer.process.TransformerCrudTransaction;
 import com.luis.transformer.model.request.TransformerRequest;
 import com.luis.transformer.model.response.TransformerResponse;
 import java.util.List;
 import javax.validation.Valid;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;

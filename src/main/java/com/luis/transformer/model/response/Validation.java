@@ -1,5 +1,6 @@
 package com.luis.transformer.model.response;
 
+import javax.validation.ConstraintViolation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,14 @@ public class Validation {
     
     public static Validation fromFieldError(FieldError error) {
         return new Validation(error.getCode(), error.getField(), error.getDefaultMessage());
+    }
+    
+    public static Validation fromConstraintViolation(ConstraintViolation error) {
+        
+        final int index = error.getPropertyPath().toString().lastIndexOf(".");
+        final String field = error.getPropertyPath().toString().substring(index);
+                
+        return new Validation(error.getLeafBean().toString(), field, error.getMessage());
     }
     
 }
