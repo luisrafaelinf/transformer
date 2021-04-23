@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "179719cf-d721-4fd3-b560-8540de81e74a",
+		"name": "Transformer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crud Transactions",
+			"item": [
+				{
+					"name": "Create new transformer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"team\": \"A\",\n    \"name\": \"Bumblebee\",\n    \"mechanicalStrength\": 1,\n    \"artificialIntelligence\": 2,\n    \"mechanicalSpeed\": 2,\n    \"endurance\": 2,\n    \"rank\": 2,\n    \"courage\": 2,\n    \"firepower\": 2,\n    \"mechanicalSkill\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transformers/v1/transformer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"transformer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get transformer by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transformers/v1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all transformers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/transformers/v1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update transformer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"team\": \"A\",\n    \"name\": \"Bumblebee\",\n    \"mechanicalStrength\": 7,\n    \"artificialIntelligence\": 9,\n    \"mechanicalSpeed\": 10,\n    \"endurance\": 9,\n    \"rank\": 6,\n    \"courage\": 7,\n    \"firepower\": 6,\n    \"mechanicalSkill\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transformers/v1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete transformer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/transformers/v1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fights",
+			"item": [
+				{
+					"name": "Optimus Prime vs Predaking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"team\": \"D\",\n        \"name\": \"Predaking\",\n        \"mechanicalStrength\": 8,\n        \"artificialIntelligence\": 9,\n        \"mechanicalSpeed\": 2,\n        \"endurance\": 6,\n        \"rank\": 7,\n        \"courage\": 5,\n        \"firepower\": 6, \n        \"mechanicalSkill\": 10\n    },\n    {\n        \"team\": \"A\",\n        \"name\": \"Optimus Prime\",\n        \"mechanicalStrength\": 6,\n        \"artificialIntelligence\": 6,\n        \"mechanicalSpeed\": 7,\n        \"endurance\": 9,\n        \"rank\": 5,\n        \"courage\": 2,\n        \"firepower\": 9, \n        \"mechanicalSkill\": 7\n    },\n    {\n        \"team\": \"A\",\n        \"name\": \"Hubcap\",\n        \"mechanicalStrength\": 4,\n        \"artificialIntelligence\": 4,\n        \"mechanicalSpeed\": 4,\n        \"endurance\": 4,\n        \"rank\": 4,\n        \"courage\": 4,\n        \"firepower\": 4, \n        \"mechanicalSkill\": 4\n    }\n]"
+						},
+						"url": {
+							"raw": "{{host}}/transformers/v1/battle",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"battle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autobots winners",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n                \"team\": \"A\",\n                \"name\": \"Optimus Prime\",\n                \"mechanicalStrength\": 9,\n                \"artificialIntelligence\": 10,\n                \"mechanicalSpeed\": 7,\n                \"endurance\": 8,\n                \"rank\": 10,\n                \"courage\": 7,\n                \"firepower\": 9,\n                \"mechanicalSkill\": 7\n    },\n    {\n                \"team\": \"A\",\n                \"name\": \"Skyfire\",\n                \"mechanicalStrength\": 7,\n                \"artificialIntelligence\": 5,\n                \"mechanicalSpeed\": 7,\n                \"endurance\": 6,\n                \"rank\": 10,\n                \"courage\": 8,\n                \"firepower\": 7,\n                \"mechanicalSkill\": 6\n    },\n    {\n                \"team\": \"A\",\n                \"name\": \"Bluestreak\",\n                \"mechanicalStrength\": 6,\n                \"artificialIntelligence\": 7,\n                \"mechanicalSpeed\": 3,\n                \"endurance\": 7,\n                \"rank\": 5,\n                \"courage\": 6,\n                \"firepower\": 6,\n                \"mechanicalSkill\": 4\n    },\n    {\n                \"team\": \"A\",\n                \"name\": \"Hound\",\n                \"mechanicalStrength\": 7,\n                \"artificialIntelligence\": 8,\n                \"mechanicalSpeed\": 5,\n                \"endurance\": 5,\n                \"rank\": 6,\n                \"courage\": 7,\n                \"firepower\": 5,\n                \"mechanicalSkill\": 6\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Megatron\",\n                \"mechanicalStrength\": 7,\n                \"artificialIntelligence\": 8,\n                \"mechanicalSpeed\": 6,\n                \"endurance\": 7,\n                \"rank\": 8,\n                \"courage\": 9,\n                \"firepower\": 9,\n                \"mechanicalSkill\": 7\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Soundwave\",\n                \"mechanicalStrength\": 6,\n                \"artificialIntelligence\": 7,\n                \"mechanicalSpeed\": 5,\n                \"endurance\": 6,\n                \"rank\": 4,\n                \"courage\": 6,\n                \"firepower\": 5,\n                \"mechanicalSkill\": 6\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Starscream\",\n                \"mechanicalStrength\": 8,\n                \"artificialIntelligence\": 5,\n                \"mechanicalSpeed\": 5,\n                \"endurance\": 4,\n                \"rank\": 5,\n                \"courage\": 5,\n                \"firepower\": 4,\n                \"mechanicalSkill\": 5\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Thundercracker\",\n                \"mechanicalStrength\": 5,\n                \"artificialIntelligence\": 4,\n                \"mechanicalSpeed\": 6,\n                \"endurance\": 6,\n                \"rank\": 4,\n                \"courage\": 6,\n                \"firepower\": 7,\n                \"mechanicalSkill\": 5\n    }\n]"
+						},
+						"url": {
+							"raw": "{{host}}/transformers/v1/battle",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"battle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tie teams",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n                \"team\": \"A\",\n                \"name\": \"Optimus Prime\",\n                \"mechanicalStrength\": 9,\n                \"artificialIntelligence\": 10,\n                \"mechanicalSpeed\": 7,\n                \"endurance\": 8,\n                \"rank\": 10,\n                \"courage\": 7,\n                \"firepower\": 9,\n                \"mechanicalSkill\": 7\n    },\n    {\n                \"team\": \"A\",\n                \"name\": \"Skyfire\",\n                \"mechanicalStrength\": 7,\n                \"artificialIntelligence\": 5,\n                \"mechanicalSpeed\": 7,\n                \"endurance\": 6,\n                \"rank\": 10,\n                \"courage\": 8,\n                \"firepower\": 7,\n                \"mechanicalSkill\": 6\n    },\n    {\n                \"team\": \"A\",\n                \"name\": \"Bluestreak\",\n                \"mechanicalStrength\": 6,\n                \"artificialIntelligence\": 7,\n                \"mechanicalSpeed\": 3,\n                \"endurance\": 7,\n                \"rank\": 5,\n                \"courage\": 6,\n                \"firepower\": 6,\n                \"mechanicalSkill\": 4\n    },\n    {\n                \"team\": \"A\",\n                \"name\": \"Hound\",\n                \"mechanicalStrength\": 4,\n                \"artificialIntelligence\": 8,\n                \"mechanicalSpeed\": 5,\n                \"endurance\": 5,\n                \"rank\": 6,\n                \"courage\": 4,\n                \"firepower\": 5,\n                \"mechanicalSkill\": 6\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Megatron\",\n                \"mechanicalStrength\": 7,\n                \"artificialIntelligence\": 8,\n                \"mechanicalSpeed\": 6,\n                \"endurance\": 7,\n                \"rank\": 8,\n                \"courage\": 9,\n                \"firepower\": 9,\n                \"mechanicalSkill\": 7\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Soundwave\",\n                \"mechanicalStrength\": 9,\n                \"artificialIntelligence\": 7,\n                \"mechanicalSpeed\": 5,\n                \"endurance\": 6,\n                \"rank\": 4,\n                \"courage\": 9,\n                \"firepower\": 5,\n                \"mechanicalSkill\": 6\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Starscream\",\n                \"mechanicalStrength\": 8,\n                \"artificialIntelligence\": 5,\n                \"mechanicalSpeed\": 5,\n                \"endurance\": 4,\n                \"rank\": 5,\n                \"courage\": 5,\n                \"firepower\": 4,\n                \"mechanicalSkill\": 5\n    },\n    {\n                \"team\": \"D\",\n                \"name\": \"Thundercracker\",\n                \"mechanicalStrength\": 5,\n                \"artificialIntelligence\": 4,\n                \"mechanicalSpeed\": 6,\n                \"endurance\": 6,\n                \"rank\": 4,\n                \"courage\": 6,\n                \"firepower\": 7,\n                \"mechanicalSkill\": 5\n    }\n]"
+						},
+						"url": {
+							"raw": "{{host}}/transformers/v1/battle",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"battle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fight demo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"team\": \"D\",\n        \"name\": \"Soundwave\",\n        \"mechanicalStrength\": 8,\n        \"artificialIntelligence\": 9,\n        \"mechanicalSpeed\": 2,\n        \"endurance\": 6,\n        \"rank\": 7,\n        \"courage\": 5,\n        \"firepower\": 6, \n        \"mechanicalSkill\": 10\n    },\n    {\n        \"team\": \"A\",\n        \"name\": \"Bluestreak\",\n        \"mechanicalStrength\": 6,\n        \"artificialIntelligence\": 6,\n        \"mechanicalSpeed\": 7,\n        \"endurance\": 9,\n        \"rank\": 5,\n        \"courage\": 2,\n        \"firepower\": 9, \n        \"mechanicalSkill\": 7\n    },\n    {\n        \"team\": \"A\",\n        \"name\": \"Hubcap\",\n        \"mechanicalStrength\": 4,\n        \"artificialIntelligence\": 4,\n        \"mechanicalSpeed\": 4,\n        \"endurance\": 4,\n        \"rank\": 4,\n        \"courage\": 4,\n        \"firepower\": 4, \n        \"mechanicalSkill\": 4\n    }\n]"
+						},
+						"url": {
+							"raw": "{{host}}/transformers/v1/battle",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transformers",
+								"v1",
+								"battle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
