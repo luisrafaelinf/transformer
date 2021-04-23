@@ -36,7 +36,7 @@ Get information from specific transformer by database ID (GET)
 > /transformers/v1/{id}
 
 Create a new transformer (POST)
-> /transformers/v1/transformer
+> /transformers/v1/
 
 Update a transformer (PUT)
 > /transformers/v1/{id}

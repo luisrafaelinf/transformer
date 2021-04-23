@@ -29,14 +29,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/transformers/v1/transformer",
+							"raw": "{{host}}/transformers/v1/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"transformers",
 								"v1",
-								"transformer"
+								""
 							]
 						}
 					},

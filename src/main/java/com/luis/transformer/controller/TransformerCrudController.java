@@ -57,7 +57,7 @@ public class TransformerCrudController {
         return (EntityModel<TransformerResponse>) assembler.toModel(transformer);
     }
 
-    @PostMapping(value = "/transformer")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public EntityModel<TransformerResponse> createTransformer(@RequestBody @Valid TransformerRequest transformerRequest) {
 
