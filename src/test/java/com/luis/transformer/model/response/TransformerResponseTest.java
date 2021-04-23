@@ -20,7 +20,7 @@ public class TransformerResponseTest {
         
         TransformerResponse response = TransformerResponse.fromTransformer(skyfire);
         
-        assertThat("the ID shoul be equals", Objects.equal(response.getId(), skyfire.getId()), is(true));
+        assertThat("the ID should be equals", Objects.equal(response.getId(), skyfire.getId()), is(true));
         assertThat("the team should be equals", Objects.equal(response.getTeam(), skyfire.getTeam()), is(true));
         assertThat("the name should be equals", Objects.equal(response.getName(), skyfire.getName()), is(true));
         assertThat("the strength should be equals", Objects.equal(response.getMechanicalStrength(), skyfire.getStrength()), is(true));
