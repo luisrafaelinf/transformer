@@ -94,7 +94,7 @@ public class BattleControllerTest {
                         + "    }"
                         + "]")
                 .contentType(ContentType.JSON)
-                .get("transformers/v1/battle")
+                .get("v1/transformers/battle")
                 .then()
                 .statusCode(200)
                 .and()
@@ -128,7 +128,7 @@ public class BattleControllerTest {
                         + "    }"
                         + "]")
                 .contentType(ContentType.JSON)
-                .get("transformers/v1/battle")
+                .get("v1/transformers/battle")
                 .then()
                 .statusCode(400)
                 .and()

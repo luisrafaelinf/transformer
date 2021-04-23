@@ -30,25 +30,25 @@ by default the service url and port is: http/localhos:9023/
 - Transformer CRUD:
 
 List all transformers (GET)
-> /transformers/v1/
+> /v1/transformers/
 
 Get information from specific transformer by database ID (GET)
-> /transformers/v1/{id}
+> /v1/transformers/{id}
 
 Create a new transformer (POST)
-> /transformers/v1/
+> /v1/transformers/
 
 Update a transformer (PUT)
-> /transformers/v1/{id}
+> /v1/transformers/{id}
 
 Update a transformer (DELETE)
-> /transformers/v1/{id}
+> /v1/transformers/{id}
 
 
 - Transformers Battle:
 
 Fight with a list of transformers (GET)
-> /transformer/v1/battle
+> /v1/transformers/battle
 
 -The above operations are available into a postman file collection located into the directory postman with data to test. This collection file was exported with the version v2.1
 
