@@ -8,19 +8,19 @@ import org.springframework.stereotype.Component;
 public class DefaultSpecialRule implements SpecialRule {
 
     @Override
-    public Boolean supremeOponents(TransformerRequest oponentOne, TransformerRequest oponentTwo) {
-        return isSupremePlayer(oponentOne) && isSupremePlayer(oponentTwo);
+    public Boolean supremeOpponents(TransformerRequest opponentOne, TransformerRequest opponentTwo) {
+        return isSupremePlayer(opponentOne) && isSupremePlayer(opponentTwo);
     }
 
     @Override
-    public TransformerRequest validateName(TransformerRequest oponentOne, TransformerRequest oponentTwo) {
+    public TransformerRequest validateName(TransformerRequest opponentOne, TransformerRequest opponentTwo) {
         
-        if (isSupremePlayer(oponentOne)) {
-            return oponentOne;
+        if (isSupremePlayer(opponentOne)) {
+            return opponentOne;
         }
         
-        if (isSupremePlayer(oponentTwo)) {
-            return oponentOne;
+        if (isSupremePlayer(opponentTwo)) {
+            return opponentOne;
         }
         
         return new TransformerRequest();

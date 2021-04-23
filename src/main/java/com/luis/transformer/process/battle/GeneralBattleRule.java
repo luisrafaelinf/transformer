@@ -4,6 +4,6 @@ import com.luis.transformer.model.request.TransformerRequest;
 
 public interface GeneralBattleRule {
 
-    public TransformerRequest pointOverallRating(TransformerRequest oponentOne, TransformerRequest oponentTwo);
+    public TransformerRequest pointOverallRating(TransformerRequest opponentOne, TransformerRequest opponentTwo);
     
 }

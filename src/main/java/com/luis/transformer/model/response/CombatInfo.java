@@ -20,7 +20,7 @@ public class CombatInfo {
     @Override
     public String toString() {
         return battles+" battles. \nWinning team ("+teamWinner+"): "+winners+" \n"
-                +"Survicors from the losing team ("+teamLoser+"): "+losers;
+                +"Survivors from the losing team ("+teamLoser+"): "+losers;
     }
     
 }

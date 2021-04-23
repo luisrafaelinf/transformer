@@ -1,5 +1,6 @@
 package com.luis.transformer.process.battle;
 
+import com.luis.transformer.constant.Team;
 import com.luis.transformer.model.request.TransformerRequest;
 import com.luis.transformer.process.converter.sort.SortedPlayer;
 import com.luis.transformer.process.separator.SplitTeam;
@@ -33,7 +34,7 @@ public class TransformerShowTeam implements ShowTeam {
     }
 
     /**
-     * this method show the order of team and score
+     * this method display the order of teams and score on console
      * @param teams 
      */
     private void showConsole(Map<String, List<TransformerRequest>> teams) {
@@ -53,7 +54,7 @@ public class TransformerShowTeam implements ShowTeam {
         System.out.print("Overall \n");
 
         for (Map.Entry<String, List<TransformerRequest>> entry : teams.entrySet()) {
-            System.out.println(entry.getKey());
+            System.out.println(Team.valueOf(entry.getKey()).getDescription());
 
             for (TransformerRequest player : entry.getValue()) {
 
@@ -69,11 +70,7 @@ public class TransformerShowTeam implements ShowTeam {
                 System.out.print("\t");
                 System.out.print(player.getMechanicalSkill());
                 System.out.print("\t");
-                System.out.print((player.getMechanicalStrength()
-                        + player.getArtificialIntelligence()
-                        + player.getMechanicalSpeed()
-                        + player.getEndurance()
-                        + player.getFirepower()));
+                System.out.print(player.overallRating()+"");
                 System.out.print("\n");
 
             }

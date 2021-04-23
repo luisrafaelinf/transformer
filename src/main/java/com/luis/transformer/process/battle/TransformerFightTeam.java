@@ -2,13 +2,13 @@ package com.luis.transformer.process.battle;
 
 import com.luis.transformer.constant.Team;
 import com.luis.transformer.exception.BattlefieldDestroyedException;
+import com.luis.transformer.exception.TieTeamBattleException;
 import com.luis.transformer.model.request.TransformerRequest;
 import com.luis.transformer.model.response.CombatInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import javax.websocket.OnOpen;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,14 +21,14 @@ public class TransformerFightTeam implements FightTeam {
     private List<TransformerRequest> teamDecepticons;    
 
     private final SpecialRule specialRule;
-    private final OponentRule oponentRule;
+    private final OpponentRule opponentRule;
     private final GeneralBattleRule battleRule;
 
     private Integer totalOfBattles = 0;
 
-    public TransformerFightTeam(SpecialRule specialRule, OponentRule oponentRule, GeneralBattleRule battleRule) {
+    public TransformerFightTeam(SpecialRule specialRule, OpponentRule opponentRule, GeneralBattleRule battleRule) {
         this.specialRule = specialRule;
-        this.oponentRule = oponentRule;
+        this.opponentRule = opponentRule;
         this.battleRule = battleRule;
     }
 
@@ -45,23 +45,23 @@ public class TransformerFightTeam implements FightTeam {
 
         while (totalOfBattles < min) {
 
-            TransformerRequest oponentOne = teamAutobots.get(totalOfBattles);
-            TransformerRequest oponentTwo = teamDecepticons.get(totalOfBattles);
+            TransformerRequest opponentOne = teamAutobots.get(totalOfBattles);
+            TransformerRequest opponentTwo = teamDecepticons.get(totalOfBattles);
             
-            if (specialRule.supremeOponents(oponentOne, oponentTwo)) {
+            if (specialRule.supremeOpponents(opponentOne, opponentTwo)) {
                 winnerAutobots.clear();
                 winnerDecepticons.clear();
                 throw new BattlefieldDestroyedException("Cybertron has been destroyed. Without survivors.");
             }
 
-            TransformerRequest supremePlayer = specialRule.validateName(oponentOne, oponentTwo);
+            TransformerRequest supremePlayer = specialRule.validateName(opponentOne, opponentTwo);
             if (Objects.nonNull(supremePlayer.getName())) {
                 addWinner(supremePlayer);
                 continue;
             }
 
-            TransformerRequest pointCourage = oponentRule.pointCourage(oponentOne, oponentTwo);
-            TransformerRequest pointStrength = oponentRule.pointStrength(oponentOne, oponentTwo);
+            TransformerRequest pointCourage = opponentRule.pointCourage(opponentOne, opponentTwo);
+            TransformerRequest pointStrength = opponentRule.pointStrength(opponentOne, opponentTwo);
 
             if ((Objects.nonNull(pointCourage.getName()) && Objects.nonNull(pointStrength.getName()))) {
 
@@ -72,14 +72,14 @@ public class TransformerFightTeam implements FightTeam {
 
             }
 
-            TransformerRequest pointSkill = oponentRule.pointSkill(oponentOne, oponentTwo);
+            TransformerRequest pointSkill = opponentRule.pointSkill(opponentOne, opponentTwo);
 
             if (Objects.nonNull(pointSkill.getName())) {
                 addWinner(pointSkill);
                 continue;
             }
 
-            TransformerRequest pointOverallRating = battleRule.pointOverallRating(oponentOne, oponentTwo);
+            TransformerRequest pointOverallRating = battleRule.pointOverallRating(opponentOne, opponentTwo);
 
             if (Objects.nonNull(pointOverallRating.getName())) {
                 addWinner(pointOverallRating);
@@ -94,16 +94,19 @@ public class TransformerFightTeam implements FightTeam {
 
     }
 
-    @Override
-    public CombatInfo resumeOfFight() {
+    private CombatInfo resumeOfFight() {
 
         CombatInfo info = new CombatInfo();
         info.setBattles(totalOfBattles);
 
         String namesAutobots = getNames(winnerAutobots);
         String namesDecepticons = getNames(winnerDecepticons);
-
-        if (winnerAutobots.size() > winnerDecepticons.size()) {
+        
+        if (winnerAutobots.size() == winnerDecepticons.size()) {
+            
+            throw new TieTeamBattleException(); //implicit message
+            
+        } else if (winnerAutobots.size() > winnerDecepticons.size()) {
 
             info.setTeamWinner(Team.A.getDescription());
             info.setWinners(namesAutobots);

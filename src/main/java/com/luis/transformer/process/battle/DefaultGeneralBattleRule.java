@@ -7,28 +7,20 @@ import org.springframework.stereotype.Service;
 public class DefaultGeneralBattleRule implements GeneralBattleRule {
 
     @Override
-    public TransformerRequest pointOverallRating(TransformerRequest oponentOne, TransformerRequest oponentTwo) {
+    public TransformerRequest pointOverallRating(TransformerRequest opponentOne, TransformerRequest opponentTwo) {
 
-        Integer overallPlayerOne = calculateOverall(oponentOne);
-        Integer overallPlayerTwo = calculateOverall(oponentTwo);
+        Integer overallPlayerOne = opponentOne.overallRating();
+        Integer overallPlayerTwo = opponentTwo.overallRating();
 
         if (overallPlayerOne > overallPlayerTwo) {
-            return oponentOne;
+            return opponentOne;
         } else if (overallPlayerOne < overallPlayerTwo) {
-            return oponentTwo;
+            return opponentTwo;
         }
         
         return new TransformerRequest();
 
     }
 
-    private Integer calculateOverall(TransformerRequest player) {
-
-        return player.getMechanicalStrength()
-                + player.getArtificialIntelligence()
-                + player.getMechanicalSpeed()
-                + player.getEndurance()
-                + player.getFirepower();
-    }
 
 }

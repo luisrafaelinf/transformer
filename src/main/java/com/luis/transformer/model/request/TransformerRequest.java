@@ -41,6 +41,15 @@ public class TransformerRequest {
     private Integer firepower;
     @Range(min = 1, max = 10)
     private Integer mechanicalSkill;
+    
+    public Integer overallRating() {
+    
+        return this.getMechanicalStrength()
+                + this.getArtificialIntelligence()
+                + this.getMechanicalSpeed()
+                + this.getEndurance()
+                + this.getFirepower();
+    }
 
     @Override
     public String toString() {

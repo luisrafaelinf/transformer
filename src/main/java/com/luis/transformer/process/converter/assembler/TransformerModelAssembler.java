@@ -17,7 +17,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 @Component
 @Qualifier("transformer")
 public class TransformerModelAssembler implements RepresentationModelAssembler<TransformerResponse, EntityModel<TransformerResponse>> {

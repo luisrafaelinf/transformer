@@ -2,6 +2,7 @@ package com.luis.transformer.configuration;
 
 import com.luis.transformer.exception.BattlefieldDestroyedException;
 import com.luis.transformer.exception.EntityAlreadyExistException;
+import com.luis.transformer.exception.TieTeamBattleException;
 import com.luis.transformer.model.response.Validation;
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
@@ -22,6 +23,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class ControllerAdvisor {
 
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @ExceptionHandler({TieTeamBattleException.class})
+    public Map handleTieTeamBattleException(TieTeamBattleException ex) {
+        return getStatusInfo(ex.getLocalizedMessage());
+    }
+    
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler({BattlefieldDestroyedException.class})
@@ -69,7 +77,7 @@ public class ControllerAdvisor {
     @ExceptionHandler({ConstraintViolationException.class})
     public ResponseEntity<Object> handleValidationExceptions(ConstraintViolationException ex) {
         
-        Map body = getStatusInfo("Violation request argunment");
+        Map body = getStatusInfo("Violation request argument");
 
         List<Validation> errors = ex.getConstraintViolations()
                 .stream()

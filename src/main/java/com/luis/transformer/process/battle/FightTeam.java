@@ -7,7 +7,5 @@ import java.util.List;
 public interface FightTeam {
 
     public CombatInfo fight(List<TransformerRequest> teamOne, List<TransformerRequest> teamTwo);
-    
-    public CombatInfo resumeOfFight();
-    
+        
 }

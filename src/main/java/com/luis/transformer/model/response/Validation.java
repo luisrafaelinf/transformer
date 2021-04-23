@@ -1,5 +1,6 @@
 package com.luis.transformer.model.response;
 
+import java.io.Serializable;
 import javax.validation.ConstraintViolation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +12,10 @@ import org.springframework.validation.FieldError;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Validation {
+public class Validation implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
     private String code;
     private String field;
     private String message;
@@ -24,7 +27,7 @@ public class Validation {
     public static Validation fromConstraintViolation(ConstraintViolation error) {
         
         final int index = error.getPropertyPath().toString().lastIndexOf(".");
-        final String field = error.getPropertyPath().toString().substring(index);
+        final String field = error.getPropertyPath().toString().substring(index+1);
                 
         return new Validation(error.getLeafBean().toString(), field, error.getMessage());
     }
