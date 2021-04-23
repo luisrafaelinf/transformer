@@ -47,7 +47,7 @@ Update a transformer (DELETE)
 
 - Transformers Battle:
 
-Fight with a list of transformers
+Fight with a list of transformers (GET)
 > /transformer/v1/battle
 
 -The above operations are available into a postman file collection located into the directory postman with data to test. This collection file was exported with the version v2.1
