@@ -65,3 +65,7 @@ This project is configurated with H2 database in memory.
 ## Data for sample
 
 When you run the project there is a Data Loader integrated that populate the tables for you with data for sample.
+
+## Assumptions
+
+When the battle ends with the teams tied, the world begins a new era of peace based on an agreement to end the war.
